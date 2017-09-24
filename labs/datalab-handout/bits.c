@@ -223,8 +223,8 @@ int fitsBits(int x, int n) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    int p=!(!(x))&!((x>>31)&(0x1));
-    return ((x>>n)+((!p)&!(!n)));
+    int bias=(x>>31)&((0x1<<n)-1);
+    return (x+bias)>>n;
 }
 /* 
  * negate - return -x 
