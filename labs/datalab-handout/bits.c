@@ -129,7 +129,6 @@ NOTES:
  *      the correct answers.
  */
 
-
 #endif
 /* 
  * bitAnd - x&y using only ~ and | 
@@ -150,7 +149,7 @@ int bitAnd(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-	int val=0xff;
+  int val=0xff;
   return (x>>(n<<3))&val;
 }
 /* 
@@ -162,7 +161,12 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return (x>>n)&(~((~x)>>n));
+/*  int c=((0x1<<31>>31)^0x1)<<31;
+  return ((x>>n)^(c>>n)); it's wrong for 0x0>>0x1==0x0
+*/
+/*Bug: return ~((~x)>>n); it's wrong for ~x contains all 32 bits,
+  as ~(0x10000000)==(0x0000000001111111) in x86-64?
+*/ 
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -182,7 +186,12 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  x=(x>>16)|x;
+  x=(x>>8)|x;
+  x=(x>>4)|x;
+  x=(x>>2)|x;
+  x=(x>>1)|x;
+  return ~x&0x1;
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -191,7 +200,7 @@ int bang(int x) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 2;
+  return 0x80000000;/*tmin==~tmax*/
 }
 /* 
  * fitsBits - return 1 if x can be represented as an 
@@ -214,7 +223,8 @@ int fitsBits(int x, int n) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return 2;
+    int p=!(!(x))&!((x>>31)&(0x1));
+    return ((x>>n)+((!p)&!(!n)));
 }
 /* 
  * negate - return -x 
@@ -224,7 +234,7 @@ int divpwr2(int x, int n) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return ~x+1;
 }
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
@@ -234,7 +244,7 @@ int negate(int x) {
  *   Rating: 3
  */
 int isPositive(int x) {
-  return 2;
+  return !(!(x))&!((x>>31)&(0x1));
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
