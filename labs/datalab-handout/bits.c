@@ -161,11 +161,12 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
+  int mask=((0x1<<(32+~n))+~0)|(0x1<<(32+~n));
+  return (x>>n)&mask;
 /*  int c=((0x1<<31>>31)^0x1)<<31;
   return ((x>>n)^(c>>n)); it's wrong for 0x0>>0x1==0x0
 */
-/*Bug: return ~((~x)>>n); it's wrong for ~x contains all 32 bits,
-  as ~(0x10000000)==(0x0000000001111111) in x86-64?
+/*Bug: return ~((~x)>>n); it's wrong for ~x is postive while x is negative
 */ 
 }
 /*
@@ -212,7 +213,9 @@ int tmin(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+  int c=33+~n;
+  int t=(x<<c)>>c;
+  return !(x^t);
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -264,7 +267,7 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4
  */
 int ilog2(int x) {
-  return 2;
+  return !!(x)+!!(x>>1)+;
 }
 /* 
  * float_neg - Return bit-level equivalent of expression -f for
