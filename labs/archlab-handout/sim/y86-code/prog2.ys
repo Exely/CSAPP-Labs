@@ -1,0 +1,7 @@
+# prog2: Pad with 2 nop's
+  irmovq $10,%rdx
+  irmovq  $3,%rax
+  nop
+  nop
+  addq %rdx,%rax
+  halt

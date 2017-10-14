@@ -14,7 +14,7 @@
 更多指令可以参考 [gdb 指令](http://csapp.cs.cmu.edu/2e/docs/gdbnotes-x86-64.pdf)   
 参考资料：[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)    
 分析汇编代码可以看出：   
-`0000000000400ee0 <phase_1>:`在346行，phase_2 等函数紧跟其后
+`0000000000400ee0 <phase_1>:`在346行，phase_2 等函数紧跟其后    
 `0000000000400da0 <main>:`在264行   
 `000000000040131b <string_length>:`在688行     
 `0000000000401338 <strings_not_equal>:`在701行   
@@ -59,7 +59,7 @@ phase1 函数将一个地址存入了 `%rsi`，然后调用了 `string_not_equal
 ## phase2
 
  ``` 
- 400f17:       8b 43 fc                mov    -0x4(%rbx),%eax
+  400f17:       8b 43 fc                mov    -0x4(%rbx),%eax
   400f1a:       01 c0                   add    %eax,%eax
   400f1c:       39 03                   cmp    %eax,(%rbx)
   400f1e:       74 05                   je     400f25 <phase_2+0x29>

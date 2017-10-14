@@ -8,3 +8,4 @@
  包含我写的笔记：    
  - [data lab 笔记](./notes/datalab.md)   
  - [bomb 笔记](./notes/bomb.md) 
+ - [attack lab 笔记](./notes/attack.md)

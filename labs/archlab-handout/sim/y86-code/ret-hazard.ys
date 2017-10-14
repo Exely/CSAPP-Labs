@@ -1,0 +1,13 @@
+/* $begin ret-hazard-ys */
+# Test instruction that modifies %esp followed by ret
+	irmovq mem,%rbx
+	mrmovq  0(%rbx),%rsp # Sets %rsp to point to return point
+	ret		     # Returns to return point 
+	halt                 # 
+rtnpt:  irmovq $5,%rsi       # Return point
+	halt
+.pos 0x40
+mem:	.quad stack	     # Holds desired stack pointer
+.pos 0x50
+stack:	.quad rtnpt          # Top of stack: Holds return point
+/* $end ret-hazard-ys */
