@@ -1,5 +1,0 @@
-# prog8: Forwarding Priority
-  irmovq $10,%rdx
-  irmovq  $3,%rdx
-  rrmovq %rdx,%rax
-  halt

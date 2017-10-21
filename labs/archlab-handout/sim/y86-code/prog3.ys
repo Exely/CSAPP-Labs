@@ -1,6 +1,0 @@
-# prog3: Pad with 1 nop
-  irmovq $10,%rdx
-  irmovq  $3,%rax
-  nop
-  addq %rdx,%rax
-  halt
