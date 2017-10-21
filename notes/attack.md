@@ -1,15 +1,13 @@
 # attack lab 笔记
 这个 lab 的文件包含：
-```
-README.txt: A file describing the contents of the directory
-ctarget: An executable program vulnerable to code-injection
-attacks
-rtarget: An executable program vulnerable to return-oriented-programming attacks
-cookie.txt: An 8-digit hex code that you will use as a unique identifier in your attacks.
-farm.c: The source code of your target’s “gadget farm,” which you will use in generating return-oriented
-programming attacks.
+
+> README.txt: A file describing the contents of the directory.    
+ctarget: An executable program vulnerable to code-injection attacks.   
+rtarget: An executable program vulnerable to return-oriented-programming attacks.   
+cookie.txt: An 8-digit hex code that you will use as a unique identifier in your attacks.     
+farm.c: The source code of your target’s “gadget farm,” which you will use in generating return-oriented programming attacks.       
 hex2raw: A utility to generate attack strings.
-```
+
 实验解答保存在 `resultn.txt` 中；这里运行 `./ctarget -q` 要用 `-q` ，毕竟不是 CMU 的学生，`-q` 的作用: `Don’t send results to the grading server` 。  
 这次的 lab 要仔细看官方的文档，里面是题目的要求，也包含解题指导。  
 这次 lab 就是输入攻击字符串，实现调用函数等目的，包含了对栈破坏，注入代码，ROP 攻击等方法，说明了栈溢出的危害。这里要使用 `unix> ./hex2raw < result.txt | ./ctarget` 来查看解答是否正确，解答保存在 `result.txt` 中，这里命令中的 `|`表示管道，就是把前面的输出作为后面的输入，`./hex2raw` 根据输入的 16 进制字符串生成攻击字符串；       
