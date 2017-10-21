@@ -1,0 +1,8 @@
+	    irmovq $4, %rdx
+	    nop
+	    nop
+	    nop
+            iaddq $-32, %rdx
+	    nop
+	    nop
+	    halt

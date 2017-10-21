@@ -1,0 +1,42 @@
+# Execution begins at address 0
+.pos 0
+irmovq stack, %rsp
+# Set up stack pointer
+	call main
+# Execute main program
+	halt
+# Terminate program
+# Sample linked list
+	.align 8
+  ele1:
+	.quad 0x00a
+	.quad ele2
+  ele2:
+	.quad 0x0b0
+	.quad ele3
+  ele3:
+	.quad 0xc00
+	.quad 0
+main:
+	irmovq ele1,%rdi
+	call sumlist
+	ret
+# sum_list - Sum the elements of a linked list
+# start in %rdi
+sumlist:    
+        xorq    %rax,%rax
+# sum = 0
+        andq    %rdi , %rdi
+        je  end                          
+loop:   mrmovq  (%rdi) , %rcx
+        addq    %rcx , %rax
+        irmovq  $8 , %rbx      
+        addq    %rbx , %rdi
+        mrmovq (%rdi),  %rdi        
+        andq    %rdi , %rdi
+        jne loop
+end:
+        ret
+# Stack starts here and grows to lower addresses
+.pos 0x200
+stack: 

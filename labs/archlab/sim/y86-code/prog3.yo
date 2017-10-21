@@ -1,0 +1,6 @@
+                            | # prog3: Pad with 1 nop
+0x000: 30f20a00000000000000 |   irmovq $10,%rdx
+0x00a: 30f00300000000000000 |   irmovq  $3,%rax
+0x014: 10                   |   nop
+0x015: 6020                 |   addq %rdx,%rax
+0x017: 00                   |   halt

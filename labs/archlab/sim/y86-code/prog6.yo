@@ -1,0 +1,14 @@
+                            | # Demonstration of return
+                            | # /* $begin prog6-ys */
+                            | # prog6
+0x000: 30f43000000000000000 |    irmovq stack,%rsp  #   Initialize stack pointer
+0x00a: 802000000000000000   |    call proc          #   Procedure call
+0x013: 30f20a00000000000000 |    irmovq $10,%rdx    #   Return point
+0x01d: 00                   |    halt
+0x020:                      | .pos 0x20
+0x020:                      | proc:                 # proc:
+0x020: 90                   |    ret                #   Return immediately
+0x021: 2023                 |    rrmovq %rdx,%rbx   #   Not executed
+0x030:                      | .pos 0x30
+0x030:                      | stack:                # stack: Stack pointer
+                            | # /* $end prog6-ys */

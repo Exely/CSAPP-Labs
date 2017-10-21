@@ -1,0 +1,7 @@
+                            | # prog10
+0x000: 30f00100000000000000 |     irmovq $1,%rax
+0x00a: 6344                 |     xorq %rsp,%rsp        # Set stack pointer to 0 and CC to 100
+0x00c: a00f                 |     pushq %rax            # Attempt to write to 0xfffffffffffffff8
+0x00e: 6000                 |     addq  %rax,%rax       # (Should not be executed) Would set CC to 000
+0x010: 30f00200000000000000 |     irmovq $2, %rax       # Not executed
+0x01a: 30f00300000000000000 |     irmovq $3, %rax       # Not executed

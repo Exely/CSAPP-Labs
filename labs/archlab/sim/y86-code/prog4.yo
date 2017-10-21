@@ -1,0 +1,5 @@
+                            | # prog4: No padding
+0x000: 30f20a00000000000000 |   irmovq $10,%rdx
+0x00a: 30f00300000000000000 |   irmovq  $3,%rax
+0x014: 6020                 |   addq %rdx,%rax
+0x016: 00                   |   halt

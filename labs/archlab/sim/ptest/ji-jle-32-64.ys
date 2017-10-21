@@ -1,0 +1,20 @@
+	      irmovq stack, %rsp
+	      irmovq $1, %rsi
+	      irmovq $2, %rdi
+	      irmovq $4, %rbp
+	      irmovq $32, %rax
+	      iaddq $-64,%rax
+	      jle target
+	      addq %rsi,%rax
+	      addq %rdi,%rax
+	      addq %rbp,%rax
+              halt
+target:
+	      addq %rsi,%rdx
+	      addq %rdi,%rdx
+	      addq %rbp,%rdx
+              nop
+              nop
+	      halt
+.pos 0x100
+stack:

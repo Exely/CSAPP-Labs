@@ -1,0 +1,13 @@
+                            | # Demonstrate branch cancellation
+                            | # /* $begin prog7-ys */
+                            | # prog7
+0x000: 6300                 |    xorq %rax,%rax 
+0x002: 741600000000000000   |    jne  target        # Not taken
+0x00b: 30f00100000000000000 |    irmovq $1, %rax    # Fall through
+0x015: 00                   |    halt
+0x016:                      | target:
+0x016: 30f20200000000000000 |    irmovq $2, %rdx    # Target
+0x020: 30f30300000000000000 |    irmovq $3, %rbx    # Target+1
+                            | # /* $end prog7-ys */
+0x02a: 00                   |    halt
+                            | 

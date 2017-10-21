@@ -1,0 +1,5 @@
+                            | 	# Assembly Code to test semantics of pushq
+0x000: 30f40001000000000000 | 	irmovq 0x100, %rsp
+0x00a: a04f                 | 	pushq %rsp  # Ambiguous
+0x00c: b00f                 | 	popq  %rax
+0x00e: 00                   | 	halt

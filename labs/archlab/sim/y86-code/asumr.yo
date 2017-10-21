@@ -1,0 +1,42 @@
+                            | # Execution begins at address 0 
+0x000:                      | 	.pos 0 
+0x000: 30f40002000000000000 | 	irmovq stack, %rsp  	# Set up stack pointer  
+0x00a: 803800000000000000   | 	call main		# Execute main program
+0x013: 00                   | 	halt			# Terminate program 
+                            | 
+                            | # Array of 4 elements
+0x018:                      | 	.align 8 	
+0x018: 0d000d000d000000     | array:	.quad 0x000d000d000d
+0x020: c000c000c0000000     | 	.quad 0x00c000c000c0
+0x028: 000b000b000b0000     | 	.quad 0x0b000b000b00
+0x030: 00a000a000a00000     | 	.quad 0xa000a000a000
+                            | 
+0x038: 30f71800000000000000 | main:	irmovq array,%rdi	
+0x042: 30f60400000000000000 | 	irmovq $4,%rsi
+0x04c: 805600000000000000   | 	call rsum		# rsum(array, 4)
+0x055: 90                   | 	ret
+                            | 
+                            | /* $begin rsum-ys */
+                            | # long rsum(long *start, long count)
+                            | # start in %rdi, count in %rsi
+0x056:                      | rsum:
+0x056: 6300                 | 	xorq %rax,%rax		# Set return value to 0
+0x058: 6266                 | 	andq %rsi,%rsi		# Set condition codes
+0x05a: 719400000000000000   | 	jle     return		# If count <= 0, return 0
+0x063: a03f                 | 	pushq %rbx		# Save callee-saved register
+0x065: 50370000000000000000 | 	mrmovq (%rdi),%rbx	# Get *start
+0x06f: 30faffffffffffffffff | 	irmovq $-1,%r10
+0x079: 60a6                 | 	addq %r10,%rsi		# count--
+0x07b: 30fa0800000000000000 | 	irmovq $8,%r10          
+0x085: 60a7                 | 	addq %r10,%rdi          # start++
+0x087: 805600000000000000   | 	call rsum
+0x090: 6030                 | 	addq %rbx,%rax          # Add *start to sum
+0x092: b03f                 | 	popq %rbx		# Restore callee-saved register
+0x094:                      | return:
+0x094: 90                   | 	ret
+                            | /* $end rsum-ys */
+                            | 
+                            | # The stack starts here and grows to lower addresses
+0x200:                      | 	.pos 0x200		
+0x200:                      | stack:	 
+                            | 
