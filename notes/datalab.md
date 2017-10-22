@@ -1,7 +1,8 @@
 # data lab 笔记
 这一个 lab 主要涉及了位运算，补码和浮点数等内容。完成 lab 不仅要实现函数的功能，还要求仅用规定的操作符，操作符数目也在限定范围内，这一点比较坑，因为这样代码可读性不高，当然难度也大了。所有题目都限定在32位系统中。     
-题目列表在 bits.c 中，完成解答可以用 lab 自带的 dlc 检查操作符是否合法，可以 `make btest` 检查解答是否正确，具体可以参见 [README](https://github.com/Exely/CSAPP/blob/master/labs/datalab-handout/README)    
-参考资料：[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)
+题目列表在 [bits.c](../labs/data/bits.c) 中，完成解答可以用 lab 自带的 dlc 检查操作符是否合法，可以 `make btest` 检查解答是否正确，具体可以参见 [README](../labs/data/README)    
+参考资料：       
+[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)
 ## 1.位操作    
 1.bitAnd
 ```C
@@ -50,9 +51,9 @@ int logicalShift(int x, int n) {
   int mask=((0x1<<(32+~n))+~0)|(0x1<<(32+~n));
   return (x>>n)&mask;
 /*  int c=((0x1<<31>>31)^0x1)<<31;
-  return ((x>>n)^(c>>n)); it's wrong for 0x0>>0x1==0x0
+  return ((x>>n)^(c>>n)); it's wrong.
 */
-/*Bug: return ~((~x)>>n); it's wrong for ~x is postive while x is negative
+/*return ~((~x)>>n); it's wrong.
 */ 
 }
 ```     
@@ -161,7 +162,7 @@ int divpwr2(int x, int n) {
   return (x+bias)>>n;
 }
 ```  
-这题计算 x/(2^n) ，注意不能直接右移，直接右移是向下舍入的，题目要求是向零舍入，也就是正数向下舍入，负数向上舍入，这里参照 CSAPP 书上的做法，给负数加上一个偏正的因子 `(0x1<<n)+~0)` ，判断负数直接看符号位。    
+这题计算 x/(2^n) ，注意不能直接右移，直接右移是向下舍入的，题目要求是向零舍入，也就是正数向下舍入，负数向上舍入，这里参照 CS:APP 书上的做法，给负数加上一个偏正的因子 `(0x1<<n)+~0)` ，判断负数直接看符号位。    
 
 9.negate
 ```C

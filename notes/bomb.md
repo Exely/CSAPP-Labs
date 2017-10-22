@@ -1,7 +1,7 @@
-# bomb 笔记
+# bomb lab 笔记
 
-这个 lab 给了一个名为 `bomb` 的程序文件，还有一个名为 `bomb.c` 的文件是题目要求和 bomb 实现的代码框架，无法编译。题目要求是运行 bomb 后输入六个 phase ，输入正确 bomb 程序才能继续运行，输入错误就会 bomb!   
-这里将结果保存在了 `result.txt` 中，看源码可知可用 `unix> ./bomb result.txt` 来运行程序；   
+这个 lab 给了一个名为 [bomb](../labs/bomb/bomb) 的程序文件，还有一个名为 [bomb.c](../labs/bomb/bomb.c) 的文件是题目要求和 bomb 实现的代码框架，无法编译。题目要求是运行 bomb 后输入六个 phase ，输入正确 bomb 程序才能继续运行，输入错误就会 bomb!   
+这里将结果保存在了 [result.txt](../labs/bomb/result.txt) 中，看源码可知可用 `unix> ./bomb result.txt` 来运行程序；   
 题目做法就是运用反编译得到该程序的汇编代码，然后通过分析汇编代码，看程序的实现，同时结合 `gdb` 调试，通过打断点、查看内存结果推测应该输入的 phase 。   
 反编译使用 `unix> objdump -d > obj.txt` ，这里 `obj.txt` 保存了汇编代码；   
 `gdb` 调试常用的指令有：   
@@ -12,7 +12,8 @@
 - `print (char *) 0xbfff890` 输出以 0xbfff890 为首地址的字符串 
 
 更多指令可以参考 [gdb 指令](http://csapp.cs.cmu.edu/2e/docs/gdbnotes-x86-64.pdf)   
-参考资料：[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)    
+参考资料：        
+[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)    
 分析汇编代码可以看出：   
 `0000000000400ee0 <phase_1>:`在346行，phase_2 等函数紧跟其后    
 `0000000000400da0 <main>:`在264行   
