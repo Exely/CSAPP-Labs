@@ -1,166 +1,39 @@
-/********************************************************
- * Kernels to be optimized for the CS:APP Performance Lab
- ********************************************************/
+# Performance Lab 笔记
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "defs.h"
+* 注意：这个 lab 在 CMU 已经被 Cache Lab 取代了。
 
-/* 
- * Please fill in the following team struct 
- */
-team_t team = {
-    "Exely", /* Team name */
+ 这个 lab 要求优化两个关于图像处理的函数，使之运行得尽可能快，仅需要修改 [kernels.c](../labs/perflab/kernels.c) 里的 `rotate` 和 `smooth` 函数（还有填写团队信息等）。然后使用 `unix> make driver ; ./driver ` 运行测试，最初的函数测试得到结果如下：
 
-    "Exely",            /* First member full name */
-    "Exely@github.com", /* First member email address */
+```txt
+  Rotate: 6.3 (rotate: Current working version)
+  Smooth: 13.2 (naive_smooth: Naive baseline implementation)
+```
 
-    "", /* Second member full name (leave blank if none) */
-    ""  /* Second member email addr (leave blank if none) */
-};
+参考资料：   
+[PerformanceLab实验报告](http://blog.duskdragon.com/2017/07/20/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPerformanceLab%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/)
 
-/***************
- * ROTATE KERNEL
- ***************/
+## 1. rotate
 
-/******************************************************
- * Your different versions of the rotate kernel go here
- ******************************************************/
+最初为 rotate 函数为：
 
-/* 
- * naive_rotate - The naive baseline version of rotate 
- */
-char naive_rotate_descr[] = "naive_rotate: Naive baseline implementation";
-void naive_rotate(int dim, pixel *src, pixel *dst)
+```C
+void naive_rotate(int dim, pixel *src, pixel *dst) 
 {
     int i, j;
 
     for (i = 0; i < dim; i++)
-        for (j = 0; j < dim; j++)
-            dst[RIDX(dim - 1 - j, i, dim)] = src[RIDX(i, j, dim)];
+    for (j = 0; j < dim; j++)
+        dst[RIDX(dim-1-j, i, dim)] = src[RIDX(i, j, dim)];
 }
+```
 
-/* 
- * rotate - Your current working version of rotate
- * IMPORTANT: This is the version you will be graded on
- */
-char rotate_descr[] = "rotate: Current working version";
-void rotate(int dim, pixel *src, pixel *dst)
-{
-    int i, j, a, b;
-    int sdim = dim - 1;
-    for (i = 0; i < dim; i += 8)
-    {
-        for (j = 0; j < dim; j += 8)
-        {
-            for (a = i; a < i + 8; a++)
-            {
-                for (b = j; b < j + 8; b++)
-                {
-                    dst[RIDX(sdim - b, a, dim)] = src[RIDX(a, b, dim)];
-                }
-            }
-        }
-    }
-}
+这里用了一个宏 `#define RIDX(i,j,n) ((i)*(n)+(j))` ，可以看出，这里限制函数性能的主要因素在访存上，经过尝试循环展开发现性能并没有提升= = ，参考资料给出了一个可行的做法，采用的是循环分块技术。
 
-/*********************************************************************
- * register_rotate_functions - Register all of your different versions
- *     of the rotate kernel with the driver by calling the
- *     add_rotate_function() for each test function. When you run the
- *     driver program, it will test and report the performance of each
- *     registered test function.  
- *********************************************************************/
+## 2. smooth
 
-void register_rotate_functions()
-{
-    add_rotate_function(&naive_rotate, naive_rotate_descr);
-    add_rotate_function(&rotate, rotate_descr);
-    /* ... Register additional test functions here */
-}
+最初的 smooth 函数为：
 
-/***************
- * SMOOTH KERNEL
- **************/
-
-/***************************************************************
- * Various typedefs and helper functions for the smooth function
- * You may modify these any way you like.
- **************************************************************/
-
-/* A struct used to compute averaged pixel value */
-typedef struct
-{
-    int red;
-    int green;
-    int blue;
-    int num;
-} pixel_sum;
-
-/* Compute min and max of two integers, respectively */
-static int min(int a, int b) { return (a < b ? a : b); }
-static int max(int a, int b) { return (a > b ? a : b); }
-
-/* 
- * initialize_pixel_sum - Initializes all fields of sum to 0 
- */
-static void initialize_pixel_sum(pixel_sum *sum)
-{
-    sum->red = sum->green = sum->blue = 0;
-    sum->num = 0;
-    return;
-}
-
-/* 
- * accumulate_sum - Accumulates field values of p in corresponding 
- * fields of sum 
- */
-static void accumulate_sum(pixel_sum *sum, pixel p)
-{
-    sum->red += (int)p.red;
-    sum->green += (int)p.green;
-    sum->blue += (int)p.blue;
-    sum->num++;
-    return;
-}
-
-/* 
- * assign_sum_to_pixel - Computes averaged pixel value in current_pixel 
- */
-static void assign_sum_to_pixel(pixel *current_pixel, pixel_sum sum)
-{
-    current_pixel->red = (unsigned short)(sum.red / sum.num);
-    current_pixel->green = (unsigned short)(sum.green / sum.num);
-    current_pixel->blue = (unsigned short)(sum.blue / sum.num);
-    return;
-}
-
-/* 
- * avg - Returns averaged pixel value at (i,j) 
- */
-static pixel avg(int dim, int i, int j, pixel *src)
-{
-    int ii, jj;
-    pixel_sum sum;
-    pixel current_pixel;
-
-    initialize_pixel_sum(&sum);
-    for (ii = max(i - 1, 0); ii <= min(i + 1, dim - 1); ii++)
-        for (jj = max(j - 1, 0); jj <= min(j + 1, dim - 1); jj++)
-            accumulate_sum(&sum, src[RIDX(ii, jj, dim)]);
-
-    assign_sum_to_pixel(&current_pixel, sum);
-    return current_pixel;
-}
-
-/******************************************************
- * Your different versions of the smooth kernel go here
- ******************************************************/
-
-/*
- * naive_smooth - The naive baseline version of smooth 
- */
-char naive_smooth_descr[] = "naive_smooth: Naive baseline implementation";
+```C
 void naive_smooth(int dim, pixel *src, pixel *dst)
 {
     int i, j;
@@ -169,13 +42,13 @@ void naive_smooth(int dim, pixel *src, pixel *dst)
         for (j = 0; j < dim; j++)
             dst[RIDX(i, j, dim)] = avg(dim, i, j, src);
 }
+```
 
-/*
- * smooth - Your current working version of smooth. 
- * IMPORTANT: This is the version you will be graded on
- */
-char smooth_descr[] = "smooth: Current working version";
+这个函数就是将图像光滑处理，每一个新的像素点的 RGB 值是最初附近最多九块的值的平均。     
+尝试减少过程调用后发现性能并没有什么变化，这里限制性能的主要因素是分支预测错误的罚时，因为在循环内部预测错误了很多次。可以考虑先将边界条件计算完，按先计算四个角的值，再计算四条边的值，再计算非边界的点的值的顺序，这样可以避免大量的分支预测，还可以有良好的局部性，而且逻辑还很清楚！    
+还有些细节，将判断第一行的循环移到判断非边界点的循环之前，可以改善一点缓存不命中的情况。优化后为如下代码，当然这里还可以进一步优化。参考资料里将宏替换为一个临时变量，代码可读性大大下降=_=
 
+```C
 void smooth(int dim, pixel *src, pixel *dst)
 {
     int i, j;
@@ -331,6 +204,7 @@ void smooth(int dim, pixel *src, pixel *dst)
         dst[RIDX(i, j, dim)] = current_pixel;
     }
 
+
     for (i = 1; i < dim - 1; i++)
     {
         for (j = 1; j < dim - 1; j++)
@@ -360,17 +234,18 @@ void smooth(int dim, pixel *src, pixel *dst)
         }
     }
 }
-/********************************************************************* 
- * register_smooth_functions - Register all of your different versions
- *     of the smooth kernel with the driver by calling the
- *     add_smooth_function() for each test function.  When you run the
- *     driver program, it will test and report the performance of each
- *     registered test function.  
- *********************************************************************/
+```
 
-void register_smooth_functions()
-{
-    add_smooth_function(&smooth, smooth_descr);
-    add_smooth_function(&naive_smooth, naive_smooth_descr);
-    /* ... Register additional test functions here */
-}
+最终测试结果为：
+
+```txt
+Summary of Your Best Scores:
+  Rotate: 10.4 (rotate: Current working version)
+  Smooth: 42.2 (smooth: Current working version)
+```
+
+性能有很大的改善。
+
+## 小结
+
+这次 lab 的题目都很开放，一点都没有做的动力= = ，想要更好的优化效果就花时间去做吧！优化第一个函数用了循环分块的方法，这我不是很懂，书上好像也没找到相关内容，还是要多学习！
