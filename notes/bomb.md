@@ -1,4 +1,4 @@
-# bomb lab 笔记
+# Bomb Lab 笔记
 
 这个 lab 给了一个名为 [bomb](../labs/bomb/bomb) 的程序文件，还有一个名为 [bomb.c](../labs/bomb/bomb.c) 的文件是题目要求和 bomb 实现的代码框架，无法编译。题目要求是运行 bomb 后输入六个 phase ，输入正确 bomb 程序才能继续运行，输入错误就会 bomb!   
 这里将结果保存在了 [result.txt](../labs/bomb/result.txt) 中，看源码可知可用 `unix> ./bomb result.txt` 来运行程序；   
