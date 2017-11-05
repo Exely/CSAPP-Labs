@@ -12,15 +12,15 @@
 
  是我写的笔记，正在更新：
 
-- [data lab 笔记](./notes/datalab.md)
+- [Data Lab 笔记](./notes/datalab.md)
 
 涉及了位运算，补码和浮点数等内容，都是 C 语言程序设计题。
 
-- [bomb lab 笔记](./notes/bomb.md)
+- [Bomb Lab 笔记](./notes/bomb.md)
 
 拆除二进制炸弹，可以大大提升看汇编代码的能力。
 
-- [attack lab 笔记](./notes/attack.md)
+- [Attack Lab 笔记](./notes/attack.md)
 
  这个 lab 主要涉及了栈随机化，不可执行等栈保护的方法和使栈溢出、 ROP 攻击等内容。
 
