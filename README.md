@@ -6,7 +6,7 @@
 
 ### [labs](./labs/)
 
- 包含所有的 lab 文件，以及 CMU 给的参考文档，也包含我写的解答文件，我的实验环境是 Ubuntu 16.04 ，其中 [source](./labs/source/) 保存了所有 lab 的原文件；
+ 包含所有的 lab 文件，以及 CMU 给的参考文档，也包含我写的解答文件，我的实验环境是 Ubuntu 16.04 amd-64，其中 [source](./labs/source/) 保存了所有 lab 的原文件；
 
 ### [notes](./notes/)
 
@@ -30,4 +30,10 @@
 
 - [Performance Lab 笔记](./notes/perflab.md)
 
-这个 lab 在 CMU 已经被 Cache Lab 取代了，考虑到 Cache Lab 比较难，可以先做这个 lab 练练手，虽然这个也有难度。基于书上第五、六章对程序进行优化，主要用了循环分块消除缓存不命中和消除分支预测错误等方法。
+这个 lab 在 CMU 已经被 Cache Lab 取代了，考虑到 Cache Lab 比较难，可以先做这个 lab 练练手，虽然这个也有难度。基于书上第五、六章对程序进行优化，主要用了循环分块消除缓存不命中和消除分支预测错误等方法。   
+
+因为重装了系统，以下实验环境改为：Ubuntu 17.10 amd-64
+
+- [Cache Lab 笔记](./notes/cachelab.md)
+
+写一个缓存模拟器和优化一个矩阵转置函数，加深对缓存的理解。已写完 Part A 。
