@@ -1,8 +1,9 @@
 # Cache Lab 笔记
 
-这个 lab 分为 Part A 和 Part B ，Part A 要求根据 [traces](../labs/cachelab/traces/) 目录下的 trace 文件，写一个模拟缓存的程序，仅需要修改 [csim.c](../labs/cachelab/csim.c) ；Part B 要求优化矩阵转置函数的性能，仅需修改 [trans.c](../labs/cachelab/trans.c)，具体要求认真阅读文档。    
+这个 lab 分为 Part A 和 Part B ，Part A 要求根据 [traces](../labs/cachelab/traces/) 目录下的 trace 文件，写一个模拟缓存的程序，仅需要修改 [csim.c](../labs/cachelab/csim.c) ；Part B 要求优化矩阵转置函数，减少缓存不命中数，仅需修改 [trans.c](../labs/cachelab/trans.c)，具体要求认真阅读文档。    
 参考资料：       
-[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)
+[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)    
+[blocking](http://csapp.cs.cmu.edu/public/waside/waside-blocking.pdf)
 
 
 ## Part A
@@ -279,8 +280,74 @@ void Load(int count, unsigned int setindex, unsigned int tag,
 }
 ```
 
-使用 `unix> make && ./driver.py` 测试得到 Part A 27分满分，测试全部通过。（但这里有一个问题，如果访问缓存的地址超出了缓存行的范围怎么办，这个 lab 不做要求）
+使用 `unix> make && ./test-csim` 或 `unix> make && ./driver.py` 测试得到 Part A 27分满分，测试全部通过。（但这里有一个问题，如果访问缓存的地址超出了缓存行的范围怎么办，这个 lab 不做要求）
 
 ## Part B
 
-Part B 要求优化矩阵转置函数的性能，仅需修改 [trans.c](../labs/cachelab/trans.c) 。
+Part B 要求优化矩阵转置函数，减少缓存 miss 情况，将 miss 数降至可得分的值，仅需修改 [trans.c](../labs/cachelab/trans.c) 。所给的 Cache 包含 32 组，每组 1 行，每行 32 块，共 1024 字节。需要安装 `valgrind` 工具，使用 `unix> make && ./test-trans` 或 `unix> make && ./driver.py` 测试，这里将使用如下三个矩阵作为测试得分点：
+
+- 32 × 32: 得满分要求 miss < 300
+- 64 × 64: 得满分要求 miss < 1300
+- 61 × 67: 得满分要求 miss < 2000
+
+做法采用分块的方法，参见网络旁注 [blocking](http://csapp.cs.cmu.edu/public/waside/waside-blocking.pdf) ，通过分块可以提高时间局部性和空间局部性。     
+对于 32×32 的矩阵，直接分块 8×8 ，注意对角线上的块 A、B 缓存时会发生冲突。在分块内进行转置。对于 61×67 的不规则的矩阵，由于对 miss 要求不高，尝试分块 16×16 可以得到满分。对于 64×64 的矩阵，分块 4×4 ，miss 降到 1699 ，未能达到满分，正在做。代码如下：
+
+```C
+void transpose_submit(int M, int N, int A[N][M], int B[M][N]) {
+  int i, j, ii, jj, a1, a2, a3, a4, a5, a6, a7, a0;
+  if (M == 32) {
+
+    for (i = 0; i < N; i += 8) {
+      for (j = 0; j < M; j += 8) {
+        for (ii = i; ii < i + 8; ii++) {
+          jj = j;
+          a0 = A[ii][jj];
+          a1 = A[ii][jj + 1];
+          a2 = A[ii][jj + 2];
+          a3 = A[ii][jj + 3];
+          a4 = A[ii][jj + 4];
+          a5 = A[ii][jj + 5];
+          a6 = A[ii][jj + 6];
+          a7 = A[ii][jj + 7];
+          B[jj][ii] = a0;
+          B[jj + 1][ii] = a1;
+          B[jj + 2][ii] = a2;
+          B[jj + 3][ii] = a3;
+          B[jj + 4][ii] = a4;
+          B[jj + 5][ii] = a5;
+          B[jj + 6][ii] = a6;
+          B[jj + 7][ii] = a7;
+        }
+      }
+    }
+  } else if (M == 64) {
+    for (i = 0; i < N; i += 4) {
+      for (j = 0; j < M; j += 4) {
+        for (ii = i; ii < i + 4; ii++) {
+          jj = j;
+          a0 = A[ii][jj];
+          a1 = A[ii][jj + 1];
+          a2 = A[ii][jj + 2];
+          a3 = A[ii][jj + 3];
+          B[jj][ii] = a0;
+          B[jj + 1][ii] = a1;
+          B[jj + 2][ii] = a2;
+          B[jj + 3][ii] = a3;
+        }
+      }
+    }
+  } else {
+    for (i = 0; i < N; i += 16) {
+      for (j = 0; j < M; j += 16) {
+        for (ii = i; ii < i + 16 && ii < N; ii++) {
+          for (jj = j; jj < j + 16 && jj < M; jj++) {
+            a0 = A[ii][jj];
+            B[jj][ii] = a0;
+          }
+        }
+      }
+    }
+  }
+}
+```
