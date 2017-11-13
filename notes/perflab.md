@@ -27,7 +27,28 @@ void naive_rotate(int dim, pixel *src, pixel *dst)
 }
 ```
 
-这里用了一个宏 `#define RIDX(i,j,n) ((i)*(n)+(j))` ，可以看出，这里限制函数性能的主要因素在访存上，经过尝试循环展开发现性能并没有提升= = ，参考资料给出了一个可行的做法，采用的是循环分块技术。
+这里用了一个宏 `#define RIDX(i,j,n) ((i)*(n)+(j))` ，可以看出，这里限制函数性能的主要因素在访存上，经过尝试循环展开发现性能并没有提升= = 。可以采用[分块](http://csapp.cs.cmu.edu/public/waside/waside-blocking.pdf)技术，直接将矩阵分为一块八行八列，性能提升明显。代码如下：
+
+```C
+void rotate(int dim, pixel *src, pixel *dst)
+{
+    int i, j, a, b;
+    int sdim = dim - 1;
+    for (i = 0; i < dim; i += 8)
+    {
+        for (j = 0; j < dim; j += 8)
+        {
+            for (a = i; a < i + 8; a++)
+            {
+                for (b = j; b < j + 8; b++)
+                {
+                    dst[RIDX(sdim - b, a, dim)] = src[RIDX(a, b, dim)];
+                }
+            }
+        }
+    }
+}
+```
 
 ## 2. smooth
 
