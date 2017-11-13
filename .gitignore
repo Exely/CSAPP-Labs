@@ -5,6 +5,13 @@
 *.dll
 *.exe
 *.o
+*.py
+*.f0
+*.f1
+*.tmp
+*.marker
+*.cism_results
+*.yo
 *.so
  
 # Packages #
