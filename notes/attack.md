@@ -15,7 +15,7 @@ hex2raw: A utility to generate attack strings.
 参考资料：    
 [CMU 的官方文档](http://csapp.cs.cmu.edu/3e/attacklab.pdf)          
 [马天猫的CS学习之旅](https://zhuanlan.zhihu.com/p/28476993)   
-[CSAPP 3e Attack lab](http://www.voidcn.com/article/p-dqoqchyx-tr.html)    
+[CSAPP 3e Attack lab](https://web.archive.org/web/20200301000000*/http://www.voidcn.com/article/p-dqoqchyx-tr.html)    
 
 在解题之前，和 bomb lab 一样， 首先反汇编可执行程序，生成汇编代码。  
  `objdump -d ctarget > ctarget.d`   
