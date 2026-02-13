@@ -1,0 +1,8 @@
+# prog5: Load/use hazard
+  irmovq $128,%rdx
+  irmovq  $3,%rcx
+  rmmovq %rcx, 0(%rdx)
+  irmovq  $10,%rbx
+  mrmovq 0(%rdx), %rax  # Load %rax
+  addq %rbx,%rax        # Use %rax
+  halt

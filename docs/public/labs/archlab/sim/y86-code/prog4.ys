@@ -1,0 +1,5 @@
+# prog4: No padding
+  irmovq $10,%rdx
+  irmovq  $3,%rax
+  addq %rdx,%rax
+  halt
