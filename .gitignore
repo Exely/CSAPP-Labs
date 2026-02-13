@@ -90,3 +90,14 @@ tramp
 
 # sftp configuration file
 sftp-config.json
+
+# Node.js
+node_modules/
+package-lock.json
+
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
+.temp
+.cache
+

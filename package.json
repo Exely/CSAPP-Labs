@@ -1,0 +1,27 @@
+{
+  "name": "csapp-labs",
+  "version": "1.0.0",
+  "description": "这个项目是我对《深入理解计算机系统》第三版配套实验的解答和我写的笔记，实验文件在目录[labs](./labs/)下，来源[Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)。",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwangrwang31/CSAPP-Labs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rwangrwang31/CSAPP-Labs/issues"
+  },
+  "homepage": "https://github.com/rwangrwang31/CSAPP-Labs#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.28"
+  }
+}
