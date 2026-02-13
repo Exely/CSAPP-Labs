@@ -25,26 +25,26 @@ Performance Lab 要求学生优化两个计算密集型函数的性能：
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/perflab/perflab.pdf)
-- [README](/labs/perflab/README)
+- <a href="/labs/perflab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **kernels.c** - 需要优化的函数实现 [查看](/labs/perflab/kernels.c)
-- **driver.c** - 性能测试驱动程序 [查看](/labs/perflab/driver.c)
-- **driver** - 测试程序（已编译）[下载](/labs/perflab/driver)
+- **kernels.c** - 需要优化的函数实现 <a href="/labs/perflab/kernels.c" target="_blank">查看</a>
+- **driver.c** - 性能测试驱动程序 <a href="/labs/perflab/driver.c" target="_blank">查看</a>
+- **driver** - 测试程序（已编译）<a href="/labs/perflab/driver" download>下载</a>
 
 ### 工具和库
 
 - **clock.c/h** - 计时工具 [查看源码](/labs/perflab/clock.c)
 - **fcyc.c/h** - 周期计数工具 [查看源码](/labs/perflab/fcyc.c)
-- **config.h** - 配置文件 [查看](/labs/perflab/config.h)
-- **defs.h** - 定义文件 [查看](/labs/perflab/defs.h)
+- **config.h** - 配置文件 <a href="/labs/perflab/config.h" target="_blank">查看</a>
+- **defs.h** - 定义文件 <a href="/labs/perflab/defs.h" target="_blank">查看</a>
 
 ### 编译文件
 
-- **Makefile** - 编译配置文件 [查看](/labs/perflab/Makefile)
+- **Makefile** - 编译配置文件 <a href="/labs/perflab/Makefile" target="_blank">查看</a>
 
 ## 🚀 快速开始
 

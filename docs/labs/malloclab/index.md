@@ -21,21 +21,21 @@ Malloc Lab 要求学生实现自己的动态内存分配器，提供类似标准
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/malloclab/malloclab.pdf)
-- [README](/labs/malloclab/README)
+- <a href="/labs/malloclab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **mm.c** - 需要实现的内存分配器（学生文件）[查看](/labs/malloclab/mm.c)
-- **mm.h** - 内存分配器接口 [查看](/labs/malloclab/mm.h)
-- **mdriver.c** - 测试驱动程序源代码 [查看](/labs/malloclab/mdriver.c)
+- **mm.c** - 需要实现的内存分配器（学生文件）<a href="/labs/malloclab/mm.c" target="_blank">查看</a>
+- **mm.h** - 内存分配器接口 <a href="/labs/malloclab/mm.h" target="_blank">查看</a>
+- **mdriver.c** - 测试驱动程序源代码 <a href="/labs/malloclab/mdriver.c" target="_blank">查看</a>
 
 ### 支持文件
 
 - **memlib.c/h** - 模拟内存系统 [查看源码](/labs/malloclab/memlib.c)
-- **config.h** - 配置参数 [查看](/labs/malloclab/config.h)
-- **Makefile** - 编译配置文件 [查看](/labs/malloclab/Makefile)
+- **config.h** - 配置参数 <a href="/labs/malloclab/config.h" target="_blank">查看</a>
+- **Makefile** - 编译配置文件 <a href="/labs/malloclab/Makefile" target="_blank">查看</a>
 
 ### 计时工具
 

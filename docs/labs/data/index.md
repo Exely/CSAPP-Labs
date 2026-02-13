@@ -18,28 +18,28 @@ Data Lab 要求学生实现简单的逻辑函数、二进制补码和浮点数�
 
 ## 📄 实验文档
 
-- [实验说明文档 (PDF)](/labs/data/datalab.pdf)
-- [README](/labs/data/README)
+- [实验说明文档 (PDF)](/labs/data/datalab.pdf){target="_blank"}
+- <a href="/labs/data/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **bits.c** - 需要完成的函数实现文件 [查看](/labs/data/bits.c) | [下载](/labs/data/bits.c)
-- **bits.h** - 函数声明头文件 [查看](/labs/data/bits.h)
-- **btest.c** - 测试程序源代码 [查看](/labs/data/btest.c)
+- **bits.c** - 需要完成的函数实现文件 <a href="/labs/data/bits.c" target="_blank">查看</a> | <a href="/labs/data/bits.c" download>下载</a>
+- **bits.h** - 函数声明头文件 <a href="/labs/data/bits.h" target="_blank">查看</a>
+- **btest.c** - 测试程序源代码 <a href="/labs/data/btest.c" target="_blank">查看</a>
 
 ### 工具和脚本
 
-- **dlc** - 数据实验编译器（检查代码规范）[下载](/labs/data/dlc)
-- **driver.pl** - 自动评分脚本 [查看](/labs/data/driver.pl)
-- **Makefile** - 编译配置文件 [查看](/labs/data/Makefile)
+- **dlc** - 数据实验编译器（检查代码规范）<a href="/labs/data/dlc" download>下载</a>
+- **driver.pl** - 自动评分脚本 <a href="/labs/data/driver.pl" target="_blank">查看</a>
+- **Makefile** - 编译配置文件 <a href="/labs/data/Makefile" target="_blank">查看</a>
 
 ### 辅助文件
 
-- **fshow.c** - 浮点数显示工具 [查看](/labs/data/fshow.c)
-- **ishow.c** - 整数显示工具 [查看](/labs/data/ishow.c)
-- **tests.c** - 测试用例 [查看](/labs/data/tests.c)
+- **fshow.c** - 浮点数显示工具 <a href="/labs/data/fshow.c" target="_blank">查看</a>
+- **ishow.c** - 整数显示工具 <a href="/labs/data/ishow.c" target="_blank">查看</a>
+- **tests.c** - 测试用例 <a href="/labs/data/tests.c" target="_blank">查看</a>
 
 ## 🚀 快速开始
 

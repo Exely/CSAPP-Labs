@@ -18,18 +18,18 @@ Bomb Lab 要求学生通过反汇编和调试工具来"拆除"一个二进制炸
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/bomb/bomblab.pdf)
-- [README](/labs/bomb/README)
+- <a href="/labs/bomb/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **bomb** - 炸弹可执行文件 [下载](/labs/bomb/bomb)
-- **bomb.c** - 炸弹源代码（框架代码）[查看](/labs/bomb/bomb.c)
+- **bomb** - 炸弹可执行文件 <a href="/labs/bomb/bomb" download>下载</a>
+- **bomb.c** - 炸弹源代码（框架代码）<a href="/labs/bomb/bomb.c" target="_blank">查看</a>
 
 ### 答案文件（参考）
 
-- **result.txt** - 拆弹答案 [查看](/labs/bomb/result.txt)
+- **result.txt** - 拆弹答案 <a href="/labs/bomb/result.txt" target="_blank">查看</a>
 
 ## 🚀 快速开始
 

@@ -21,21 +21,21 @@ Proxy Lab 要求学生实现一个支持并发的 Web 代理服务器。代理�
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/proxylab/proxylab.pdf)
-- [README](/labs/proxylab/README)
+- <a href="/labs/proxylab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **proxy.c** - 需要实现的代理服务器（框架代码）[查看](/labs/proxylab/proxy.c)
+- **proxy.c** - 需要实现的代理服务器（框架代码）<a href="/labs/proxylab/proxy.c" target="_blank">查看</a>
 - **csapp.c/h** - CSAPP 包装函数库 [查看源码](/labs/proxylab/csapp.c) | [查看头文件](/labs/proxylab/csapp.h)
 
 ### 测试工具
 
-- **driver.sh** - 自动评分脚本 [查看](/labs/proxylab/driver.sh)
-- **nop-server.py** - 简单的测试服务器 [查看](/labs/proxylab/nop-server.py)
-- **free-port.sh** - 端口检查工具 [查看](/labs/proxylab/free-port.sh)
-- **port-for-user.pl** - 端口分配工具 [查看](/labs/proxylab/port-for-user.pl)
+- **driver.sh** - 自动评分脚本 <a href="/labs/proxylab/driver.sh" target="_blank">查看</a>
+- **nop-server.py** - 简单的测试服务器 <a href="/labs/proxylab/nop-server.py" target="_blank">查看</a>
+- **free-port.sh** - 端口检查工具 <a href="/labs/proxylab/free-port.sh" target="_blank">查看</a>
+- **port-for-user.pl** - 端口分配工具 <a href="/labs/proxylab/port-for-user.pl" target="_blank">查看</a>
 
 ### 参考实现
 
@@ -43,7 +43,7 @@ Proxy Lab 要求学生实现一个支持并发的 Web 代理服务器。代理�
 
 ### 编译文件
 
-- **Makefile** - 编译配置文件 [查看](/labs/proxylab/Makefile)
+- **Makefile** - 编译配置文件 <a href="/labs/proxylab/Makefile" target="_blank">查看</a>
 
 ## 🚀 快速开始
 

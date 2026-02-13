@@ -21,26 +21,26 @@ Shell Lab 要求学生实现一个简单的 Unix shell 程序（命令行解释�
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/shlab/shlab.pdf)
-- [README](/labs/shlab/README)
+- <a href="/labs/shlab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 主要文件
 
-- **tsh.c** - 需要实现的 shell 程序（框架代码）[查看](/labs/shlab/tsh.c)
-- **Makefile** - 编译配置文件 [查看](/labs/shlab/Makefile)
+- **tsh.c** - 需要实现的 shell 程序（框架代码）<a href="/labs/shlab/tsh.c" target="_blank">查看</a>
+- **Makefile** - 编译配置文件 <a href="/labs/shlab/Makefile" target="_blank">查看</a>
 
 ### 测试文件
 
-- **sdriver.pl** - Shell 驱动程序（用于测试）[查看](/labs/shlab/sdriver.pl)
+- **sdriver.pl** - Shell 驱动程序（用于测试）<a href="/labs/shlab/sdriver.pl" target="_blank">查看</a>
 - **trace01.txt - trace16.txt** - 测试用例文件
 
 ### 辅助程序
 
-- **myint.c** - 测试程序（捕获 SIGINT）[查看](/labs/shlab/myint.c)
-- **myspin.c** - 测试程序（长时间运行）[查看](/labs/shlab/myspin.c)
-- **mysplit.c** - 测试程序（创建子进程）[查看](/labs/shlab/mysplit.c)
-- **mystop.c** - 测试程序（捕获 SIGTSTP）[查看](/labs/shlab/mystop.c)
+- **myint.c** - 测试程序（捕获 SIGINT）<a href="/labs/shlab/myint.c" target="_blank">查看</a>
+- **myspin.c** - 测试程序（长时间运行）<a href="/labs/shlab/myspin.c" target="_blank">查看</a>
+- **mysplit.c** - 测试程序（创建子进程）<a href="/labs/shlab/mysplit.c" target="_blank">查看</a>
+- **mystop.c** - 测试程序（捕获 SIGTSTP）<a href="/labs/shlab/mystop.c" target="_blank">查看</a>
 
 ## 🚀 快速开始
 

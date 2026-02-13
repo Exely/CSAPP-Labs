@@ -23,27 +23,27 @@ Cache Lab 包含两个部分：
 ## 📄 实验文档
 
 - [实验说明文档 (PDF)](/labs/cachelab/cachelab.pdf)
-- [README](/labs/cachelab/README)
+- <a href="/labs/cachelab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### Part A: 缓存模拟器
 
-- **csim.c** - 缓存模拟器源代码（需要完成）[查看](/labs/cachelab/csim.c)
-- **csim-ref** - 参考实现（用于对比）[下载](/labs/cachelab/csim-ref)
-- **test-csim** - 测试程序 [下载](/labs/cachelab/test-csim)
+- **csim.c** - 缓存模拟器源代码（需要完成）<a href="/labs/cachelab/csim.c" target="_blank">查看</a>
+- **csim-ref** - 参考实现（用于对比）<a href="/labs/cachelab/csim-ref" download>下载</a>
+- **test-csim** - 测试程序 <a href="/labs/cachelab/test-csim" download>下载</a>
 
 ### Part B: 矩阵转置
 
-- **trans.c** - 矩阵转置函数（需要优化）[查看](/labs/cachelab/trans.c)
-- **test-trans.c** - 测试程序源代码 [查看](/labs/cachelab/test-trans.c)
-- **test-trans** - 测试程序 [下载](/labs/cachelab/test-trans)
+- **trans.c** - 矩阵转置函数（需要优化）<a href="/labs/cachelab/trans.c" target="_blank">查看</a>
+- **test-trans.c** - 测试程序源代码 <a href="/labs/cachelab/test-trans.c" target="_blank">查看</a>
+- **test-trans** - 测试程序 <a href="/labs/cachelab/test-trans" download>下载</a>
 
 ### 支持文件
 
 - **cachelab.c/h** - 实验框架代码 [查看源码](/labs/cachelab/cachelab.c) | [查看头文件](/labs/cachelab/cachelab.h)
-- **driver.py** - 自动评分脚本 [查看](/labs/cachelab/driver.py)
-- **Makefile** - 编译配置文件 [查看](/labs/cachelab/Makefile)
+- **driver.py** - 自动评分脚本 <a href="/labs/cachelab/driver.py" target="_blank">查看</a>
+- **Makefile** - 编译配置文件 <a href="/labs/cachelab/Makefile" target="_blank">查看</a>
 
 ### 测试文件
 

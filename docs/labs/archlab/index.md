@@ -24,18 +24,18 @@ Architecture Lab 要求学生在 Y86-64 处理器架构的模拟器上工作，�
 
 - [实验说明文档 (PDF)](/labs/archlab/archlab.pdf)
 - [模拟器指南 (PDF)](/labs/archlab/simguide.pdf)
-- [README](/labs/archlab/README)
+- <a href="/labs/archlab/README" target="_blank">README</a>
 
 ## 💻 实验文件
 
 ### 模拟器
 
-- **sim.tar** - Y86-64 模拟器源代码包 [下载](/labs/archlab/sim.tar)
+- **sim.tar** - Y86-64 模拟器源代码包 <a href="/labs/archlab/sim.tar" download>下载</a>
 - **sim/** - 模拟器目录（已解压）
 
 ### 主要文件
 
-- **Makefile** - 编译配置文件 [查看](/labs/archlab/Makefile)
+- **Makefile** - 编译配置文件 <a href="/labs/archlab/Makefile" target="_blank">查看</a>
 
 ## 🚀 快速开始
 
