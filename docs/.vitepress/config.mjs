@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "CSAPP Labs",
-  description: "深入理解计算机系统实验笔记",
+  title: "CSAPP",
+  description: "CSAPP 全量内容：原书阅读 + Labs 实验",
   base: '/',
   
   themeConfig: {
@@ -12,6 +12,7 @@ export default defineConfig({
     
     nav: [
       { text: '首页', link: '/' },
+      { text: '原书', link: '/book/' },
       { text: 'Labs', link: '/labs/' },
       { 
         text: '笔记', 
@@ -34,11 +35,29 @@ export default defineConfig({
       },
       { 
         text: 'GitHub',
-        link: 'https://github.com/rwangrwang31/CSAPP-Labs'
+        link: 'https://github.com/Exely/CSAPP-Labs'
       }
     ],
 
     sidebar: {
+      '/book/': [
+        {
+          text: 'CSAPP 原书内容',
+          items: [
+            { text: '阅读入口', link: '/book/' },
+            { text: '完整目录', link: '/book/SUMMARY' },
+            { text: '本电子书信息', link: '/book/README' },
+            { text: '出版信息', link: '/book/publish-info/publisher-words' },
+            { text: '第 1 章', link: '/book/ch01-a-tour-of-computer-systems/' },
+            { text: '第一部分（2-6 章）', link: '/book/part1/ch02-representing-and-manipulating-information/' },
+            { text: '第二部分（7-9 章）', link: '/book/part2/ch07-linking/' },
+            { text: '第三部分（10-12 章）', link: '/book/part3/ch10-system-level-io/' },
+            { text: '原书实验文档', link: '/book/labs/labs-overview/' },
+            { text: '附录 A', link: '/book/appendix-error-handling' },
+            { text: '参考文献', link: '/book/references' }
+          ]
+        }
+      ],
       '/notes/': [
         {
           text: '实验笔记',
@@ -72,7 +91,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/rwangrwang31/CSAPP-Labs' }
+      { icon: 'github', link: 'https://github.com/Exely/CSAPP-Labs' }
     ],
 
     footer: {
@@ -132,7 +151,7 @@ export default defineConfig({
 
     // 编辑链接
     editLink: {
-      pattern: 'https://github.com/rwangrwang31/CSAPP-Labs/edit/main/docs/:path',
+      pattern: 'https://github.com/Exely/CSAPP-Labs/edit/master/docs/:path',
       text: '在 GitHub 上编辑此页面'
     }
   },
@@ -140,8 +159,7 @@ export default defineConfig({
   // 启用深色模式
   appearance: true,
 
-  // 忽略死链接检查 - 因为笔记中引用了labs目录中的实际文件
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: false,
 
   // Markdown 配置
   markdown: {

@@ -2,19 +2,19 @@
 layout: home
 
 hero:
-  name: "CSAPP Labs"
+  name: "CSAPP"
   text: "深入理解计算机系统"
-  tagline: "第三版配套实验解答和笔记"
+  tagline: "原书全量内容 + Labs 实验笔记"
   actions:
     - theme: brand
-      text: 开始阅读
-      link: /notes/datalab
+      text: 阅读原书
+      link: /book/
     - theme: alt
       text: 查看 Labs
       link: /labs/
     - theme: alt
       text: GitHub
-      link: https://github.com/rwangrwang31/CSAPP-Labs
+      link: https://github.com/Exely/CSAPP-Labs
 
 features:
   - icon: 💻
@@ -45,7 +45,9 @@ features:
 
 ## 项目简介
 
-这个项目是我对《深入理解计算机系统》第三版配套实验的解答和我写的笔记。
+这个站点融合了《深入理解计算机系统》中文电子版内容与配套 Labs 实验材料，支持公网完整浏览。
+
+原书内容入口：[CSAPP 原书](/book/)
 
 实验文件在目录 [labs](/labs/) 下，来源于 [CMU Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)。
 

@@ -1,0 +1,46 @@
+# Modification of asum code to compute absolute values of entries.
+# This version uses a conditional jump
+# Execution begins at address 0 
+	.pos 0 
+	irmovq stack, %rsp  	# Set up stack pointer  
+	call main		# Execute main program
+	halt			# Terminate program 
+
+# Array of 4 elements
+	.align 8 	
+array:	.quad 0x0000000d000d000d
+	.quad 0xffffff3fff3fff40  # -0x000000c000c000c0
+	.quad 0x00000b000b000b00
+	.quad 0xffff5fff5fff6000  # -0x0000a000a000a000  
+
+main:	irmovq array,%rdi	
+	irmovq $4,%rsi
+	call absSum		# absSum(array, 4)
+	ret 
+/* $begin abs-sum-jmp-ys */
+# long absSum(long *start, long count)
+# start in %rdi, count in %rsi
+absSum:
+	irmovq $8,%r8           # Constant 8
+	irmovq $1,%r9	        # Constant 1
+	xorq %rax,%rax		# sum = 0
+	andq %rsi,%rsi		# Set condition codes
+	jmp  test
+loop:
+	mrmovq (%rdi),%r10	# x = *start
+	xorq %r11,%r11          # Constant 0
+	subq %r10,%r11		# -x
+	jle pos			# Skip if -x <= 0
+	rrmovq %r11,%r10	# x = -x
+pos:
+	addq %r10,%rax          # Add to sum
+	addq %r8,%rdi           # start++
+	subq %r9,%rsi           # count--
+test:
+	jne    loop             # Stop when 0
+	ret
+/* $end abs-sum-jmp-ys */
+
+# The stack starts here and grows to lower addresses
+	.pos 0x200		
+stack:	 

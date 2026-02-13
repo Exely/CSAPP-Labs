@@ -1,6 +1,6 @@
 # CSAPP-Labs
 
-这个项目是我对《深入理解计算机系统》第三版配套实验的解答和我写的笔记，实验文件在目录[labs](./labs/)下，来源[Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)。
+这个项目融合了《深入理解计算机系统》第三版中文电子版与配套实验内容，支持公网完整浏览。实验文件在目录[labs](./labs/)下，来源[Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)。
 
 ## 📖 在线文档
 
@@ -57,3 +57,7 @@ npm run docs:preview
 - [Cache Lab 笔记](./notes/cachelab.md)
 
 Part A要求写一个缓存模拟器，Part B要求优化矩阵转置函数，减少缓存不命中数。这个lab可以加深对缓存的理解。已写完Part A。
+
+### [docs/book](./docs/book/)
+
+融合自 Hansimov/csapp 的原书全量 Markdown 内容，部署后可通过站点 `/book/` 路径访问。
