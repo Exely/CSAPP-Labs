@@ -24,6 +24,14 @@ export default defineConfig({
           { text: 'Cache Lab', link: '/notes/cachelab' }
         ]
       },
+      {
+        text: '参考资源',
+        items: [
+          { text: 'CMU 15-213 课程', link: 'http://www.cs.cmu.edu/~213/' },
+          { text: 'CSAPP 官方网站', link: 'http://csapp.cs.cmu.edu/' },
+          { text: 'CSAPP 学习笔记 (Hansimov)', link: 'https://hansimov.gitbook.io/csapp/' }
+        ]
+      },
       { 
         text: 'GitHub',
         link: 'https://github.com/rwangrwang31/CSAPP-Labs'

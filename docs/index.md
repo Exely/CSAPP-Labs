@@ -72,6 +72,13 @@ features:
 
 ## 参考资源
 
+### 官方资源
 - [CMU 15-213: Introduction to Computer Systems](http://www.cs.cmu.edu/~213/)
 - [Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)
+- [CSAPP 官方网站](http://csapp.cs.cmu.edu/)
 - 《深入理解计算机系统》第三版（Computer Systems: A Programmer's Perspective, 3/E）
+
+### 相关学习资源
+- [CSAPP 学习笔记 by Hansimov](https://hansimov.gitbook.io/csapp/) - 非常详细的 CSAPP 学习笔记和实验指南
+- [CSAPP 课程视频（中文字幕）](https://www.bilibili.com/video/BV1iW411d7hd/)
+- [深入理解计算机系统（CSAPP）学习指南](https://github.com/topics/csapp)
