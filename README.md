@@ -2,6 +2,28 @@
 
 这个项目是我对《深入理解计算机系统》第三版配套实验的解答和我写的笔记，实验文件在目录[labs](./labs/)下，来源[Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)。
 
+## 📖 在线文档
+
+本项目已部署为静态网站，支持完整的文档浏览、搜索和深色模式：
+
+**部署到 Vercel**: 访问 [DEPLOY.md](./DEPLOY.md) 查看详细的部署说明
+
+### 本地预览
+
+```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run docs:dev
+
+# 构建生产版本
+npm run docs:build
+
+# 预览生产构建
+npm run docs:preview
+```
+
 ## 目录：
 
 ### [labs](./labs/)
